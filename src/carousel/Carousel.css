@@ -1,6 +1,9 @@
 .main-container {
   width: 450px;
   height: 150px;
+
+  display: flex;
+  align-items: center;
 }
 
 .window {
@@ -12,4 +15,8 @@
 .all-items-container {
   height: 100%;
   display: flex;
+}
+
+.arrow {
+  cursor: pointer;
 }
