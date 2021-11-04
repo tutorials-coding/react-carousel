@@ -1,6 +1,8 @@
 import { useEffect, useState, Children, cloneElement } from 'react'
 import './Carousel.css'
 
+const PAGE_WIDTH = 450
+
 export const Carousel = ({ children }) => {
   const [items, setItems] = useState([])
 
@@ -8,7 +10,11 @@ export const Carousel = ({ children }) => {
     setItems(
       Children.map(children, (child) => {
         return cloneElement(child, {
-          style: { minWidth: '450px', maxWidth: '450px', height: '100%' },
+          style: {
+            minWidth: `${PAGE_WIDTH}px`,
+            maxWidth: `${PAGE_WIDTH}px`,
+            height: '100%',
+          },
         })
       })
     )
