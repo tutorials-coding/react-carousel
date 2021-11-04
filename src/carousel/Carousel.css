@@ -1,0 +1,14 @@
+.main-container {
+  width: 450px;
+  height: 150px;
+}
+
+.window {
+  height: 100%;
+  width: 100%;
+}
+
+.all-items-container {
+  height: 100%;
+  display: flex;
+}

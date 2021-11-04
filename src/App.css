@@ -1,0 +1,15 @@
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-1 {
+  background-color: cornflowerblue;
+}
+.item-2 {
+  background-color: coral;
+}
+.item-3 {
+  background-color: darkseagreen;
+}
