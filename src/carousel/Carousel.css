@@ -12,7 +12,7 @@
   overflow: hidden;
 }
 
-.all-items-container {
+.all-pages-container {
   height: 100%;
   display: flex;
   transition: translate;

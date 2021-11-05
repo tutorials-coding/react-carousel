@@ -43,7 +43,7 @@ export const Carousel = ({ children }) => {
       <FaChevronLeft className="arrow" onClick={handleLeftArrowClick} />
       <div className="window">
         <div
-          className="all-items-container"
+          className="all-pages-container"
           style={{ transform: `translateX(${offset}px)` }}
         >
           {items}
