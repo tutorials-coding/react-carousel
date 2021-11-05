@@ -15,6 +15,10 @@
 .all-items-container {
   height: 100%;
   display: flex;
+  transition: translate;
+  transition-property: transform;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
 }
 
 .arrow {
