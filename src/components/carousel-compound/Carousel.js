@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+import { Page } from './Page'
 import './Carousel.css'
 
 const PAGE_WIDTH = 450
@@ -38,3 +39,5 @@ export const Carousel = ({ children }) => {
     </div>
   )
 }
+
+Carousel.Page = Page
