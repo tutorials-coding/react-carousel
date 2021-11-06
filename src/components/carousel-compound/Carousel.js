@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import { Page } from './Page'
+import { CarouselContext } from './carousel-context'
 import './Carousel.css'
 
 const PAGE_WIDTH = 450
@@ -23,7 +24,7 @@ export const Carousel = ({ children }) => {
   }
 
   return (
-    <>
+    <CarouselContext.Provider value={{ width: PAGE_WIDTH }}>
       <div className="main-container">
         <FaChevronLeft className="arrow" onClick={handleLeftArrowClick} />
         <div className="window">
@@ -38,7 +39,7 @@ export const Carousel = ({ children }) => {
         </div>
         <FaChevronRight className="arrow" onClick={handleRightArrowClick} />
       </div>
-    </>
+    </CarouselContext.Provider>
   )
 }
 
