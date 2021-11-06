@@ -1,8 +1,9 @@
-.item {
+.app__main-container {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  user-select: none;
+  flex-direction: column;
+}
+.app__main-container > *:not(:last-child) {
+  margin-bottom: 50px;
 }
 
 .item-1 {
@@ -13,4 +14,11 @@
 }
 .item-3 {
   background-color: darkseagreen;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
 }
