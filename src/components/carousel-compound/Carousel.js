@@ -23,20 +23,22 @@ export const Carousel = ({ children }) => {
   }
 
   return (
-    <div className="main-container">
-      <FaChevronLeft className="arrow" onClick={handleLeftArrowClick} />
-      <div className="window">
-        <div
-          className="all-pages-container"
-          style={{
-            transform: `translateX(${offset}px)`,
-          }}
-        >
-          {children}
+    <>
+      <div className="main-container">
+        <FaChevronLeft className="arrow" onClick={handleLeftArrowClick} />
+        <div className="window">
+          <div
+            className="all-pages-container"
+            style={{
+              transform: `translateX(${offset}px)`,
+            }}
+          >
+            {children}
+          </div>
         </div>
+        <FaChevronRight className="arrow" onClick={handleRightArrowClick} />
       </div>
-      <FaChevronRight className="arrow" onClick={handleRightArrowClick} />
-    </div>
+    </>
   )
 }
 
