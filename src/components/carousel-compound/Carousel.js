@@ -4,27 +4,26 @@ import { Page } from './Page'
 import { CarouselContext } from './carousel-context'
 import './Carousel.css'
 
-const PAGE_WIDTH = 450
-
 export const Carousel = ({ children }) => {
   const [offset, setOffset] = useState(0)
+  const [width, setWidth] = useState(450)
 
   const handleLeftArrowClick = () => {
     setOffset((currentOffset) => {
-      const newOffset = currentOffset + PAGE_WIDTH
+      const newOffset = currentOffset + width
       return Math.min(newOffset, 0)
     })
   }
   const handleRightArrowClick = () => {
     setOffset((currentOffset) => {
-      const newOffset = currentOffset - PAGE_WIDTH
-      const maxOffset = -(PAGE_WIDTH * (children.length - 1))
+      const newOffset = currentOffset - width
+      const maxOffset = -(width * (children.length - 1))
       return Math.max(newOffset, maxOffset)
     })
   }
 
   return (
-    <CarouselContext.Provider value={{ width: PAGE_WIDTH }}>
+    <CarouselContext.Provider value={{ width }}>
       <div className="main-container">
         <FaChevronLeft className="arrow" onClick={handleLeftArrowClick} />
         <div className="window">
