@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import { Page } from './Page'
 import { CarouselContext } from './carousel-context'
@@ -7,6 +7,23 @@ import './Carousel.css'
 export const Carousel = ({ children }) => {
   const [offset, setOffset] = useState(0)
   const [width, setWidth] = useState(450)
+
+  const windowElRef = useRef()
+
+  useEffect(() => {
+    const resizeHandler = () => {
+      const windowElWidth = windowElRef.current.offsetWidth
+      console.log('resized', windowElWidth)
+      setWidth(windowElWidth)
+      setOffset(0) // to prevent wrong offset
+    }
+
+    window.addEventListener('resize', resizeHandler)
+
+    return () => {
+      window.removeEventListener('resize', resizeHandler)
+    }
+  }, [])
 
   const handleLeftArrowClick = () => {
     setOffset((currentOffset) => {
@@ -26,7 +43,7 @@ export const Carousel = ({ children }) => {
     <CarouselContext.Provider value={{ width }}>
       <div className="main-container">
         <FaChevronLeft className="arrow" onClick={handleLeftArrowClick} />
-        <div className="window">
+        <div className="window" ref={windowElRef}>
           <div
             className="all-pages-container"
             style={{
