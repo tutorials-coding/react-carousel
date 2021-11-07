@@ -1,6 +1,7 @@
 .app__main-container {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 .app__main-container > *:not(:last-child) {
   margin-bottom: 50px;
