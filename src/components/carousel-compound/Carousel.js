@@ -45,6 +45,14 @@ export const Carousel = ({ children, infinite }) => {
   }, [clonesCount, width])
 
   useEffect(() => {
+    if (transitionDuration === 0) {
+      setTimeout(() => {
+        setTransitionDuration(TRANSITION_DURATION)
+      }, TRANSITION_DURATION)
+    }
+  }, [transitionDuration])
+
+  useEffect(() => {
     if (!infinite) return
 
     // с элемента 0 (clone) -> к предпоследнему (реальный)
