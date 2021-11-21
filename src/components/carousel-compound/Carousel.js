@@ -4,6 +4,8 @@ import Page from './Page'
 import { CarouselContext } from './carousel-context'
 import './Carousel.css'
 
+const TRANSITION_DURATION = 300
+
 export const Carousel = ({ children, infinite }) => {
   const [offset, setOffset] = useState(0)
   const [width, setWidth] = useState(450)
@@ -40,6 +42,25 @@ export const Carousel = ({ children, infinite }) => {
       window.removeEventListener('resize', resizeHandler)
     }
   }, [clonesCount, width])
+
+  useEffect(() => {
+    if (!infinite) return
+
+    // с элемента 0 (clone) -> к предпоследнему (реальный)
+    if (offset === 0) {
+      setTimeout(() => {
+        setOffset(-(width * (pages.length - 1 - clonesCount.tail)))
+      }, TRANSITION_DURATION)
+      return
+    }
+    // с элемента n (clone) -> к элементу 1 (реальный)
+    if (offset === -(width * (pages.length - 1))) {
+      setTimeout(() => {
+        setOffset(-(clonesCount.head * width))
+      }, TRANSITION_DURATION)
+      return
+    }
+  }, [offset, infinite, pages, clonesCount, width])
 
   const handleLeftArrowClick = () => {
     setOffset((currentOffset) => {
