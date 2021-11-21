@@ -30,7 +30,7 @@ export const Carousel = ({ children, infinite }) => {
       const windowElWidth = windowElRef.current.offsetWidth
       console.log('resized', windowElWidth)
       setWidth(windowElWidth)
-      setOffset(0) // to prevent wrong offset
+      setOffset(-(clonesCount.head * width)) // to prevent wrong offset
     }
 
     resizeHandler()
@@ -39,7 +39,7 @@ export const Carousel = ({ children, infinite }) => {
     return () => {
       window.removeEventListener('resize', resizeHandler)
     }
-  }, [])
+  }, [clonesCount, width])
 
   const handleLeftArrowClick = () => {
     setOffset((currentOffset) => {
