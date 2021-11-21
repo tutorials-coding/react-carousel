@@ -11,6 +11,7 @@ export const Carousel = ({ children, infinite }) => {
   const [width, setWidth] = useState(450)
   const [pages, setPages] = useState([])
   const [clonesCount, setClonesCount] = useState({ head: 0, tail: 0 })
+  const [transitionDuration, setTransitionDuration] = useState(300)
 
   const windowElRef = useRef()
 
@@ -49,6 +50,7 @@ export const Carousel = ({ children, infinite }) => {
     // с элемента 0 (clone) -> к предпоследнему (реальный)
     if (offset === 0) {
       setTimeout(() => {
+        setTransitionDuration(0)
         setOffset(-(width * (pages.length - 1 - clonesCount.tail)))
       }, TRANSITION_DURATION)
       return
@@ -56,6 +58,7 @@ export const Carousel = ({ children, infinite }) => {
     // с элемента n (clone) -> к элементу 1 (реальный)
     if (offset === -(width * (pages.length - 1))) {
       setTimeout(() => {
+        setTransitionDuration(0)
         setOffset(-(clonesCount.head * width))
       }, TRANSITION_DURATION)
       return
@@ -85,6 +88,7 @@ export const Carousel = ({ children, infinite }) => {
             className="all-pages-container"
             style={{
               transform: `translateX(${offset}px)`,
+              transitionDuration: `${transitionDuration}ms`,
             }}
           >
             {pages}
