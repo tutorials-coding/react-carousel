@@ -8,16 +8,18 @@ export const Carousel = ({ children, infinite }) => {
   const [offset, setOffset] = useState(0)
   const [width, setWidth] = useState(450)
   const [pages, setPages] = useState([])
+  const [clonesCount, setClonesCount] = useState({ head: 0, tail: 0 })
 
   const windowElRef = useRef()
 
   useEffect(() => {
     if (infinite) {
       setPages([
-        cloneElement(children[Children.count(children) - 1]),
+        cloneElement(children[Children.count(children) - 1]), // head: 1
         ...children,
-        cloneElement(children[0]),
+        cloneElement(children[0]), // tail: 1
       ])
+      setClonesCount({ head: 1, tail: 1 })
       return
     }
     setPages(children)
