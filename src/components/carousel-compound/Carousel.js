@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
-import { Page } from './Page'
+import Page from './Page'
 import { CarouselContext } from './carousel-context'
 import './Carousel.css'
 
