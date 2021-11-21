@@ -18,6 +18,7 @@ export const Carousel = ({ children }) => {
       setOffset(0) // to prevent wrong offset
     }
 
+    resizeHandler()
     window.addEventListener('resize', resizeHandler)
 
     return () => {
