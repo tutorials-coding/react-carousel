@@ -4,7 +4,7 @@ import CarouselCompound from './components/carousel-compound'
 export default function App() {
   return (
     <div className="app__main-container">
-      <CarouselCompound>
+      <CarouselCompound infinite>
         <CarouselCompound.Page>
           <div className="item item-1">Item 1</div>
         </CarouselCompound.Page>

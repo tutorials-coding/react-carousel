@@ -4,7 +4,7 @@ import Page from './Page'
 import { CarouselContext } from './carousel-context'
 import './Carousel.css'
 
-export const Carousel = ({ children }) => {
+export const Carousel = ({ children, infinite }) => {
   const [offset, setOffset] = useState(0)
   const [width, setWidth] = useState(450)
 
