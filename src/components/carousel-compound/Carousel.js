@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, Children, cloneElement } from 'react'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import Page from './Page'
 import { CarouselContext } from './carousel-context'
@@ -7,8 +7,21 @@ import './Carousel.css'
 export const Carousel = ({ children, infinite }) => {
   const [offset, setOffset] = useState(0)
   const [width, setWidth] = useState(450)
+  const [pages, setPages] = useState([])
 
   const windowElRef = useRef()
+
+  useEffect(() => {
+    if (infinite) {
+      setPages([
+        cloneElement(children[Children.count(children) - 1]),
+        ...children,
+        cloneElement(children[0]),
+      ])
+      return
+    }
+    setPages(children)
+  }, [children, infinite])
 
   useEffect(() => {
     const resizeHandler = () => {
@@ -35,7 +48,7 @@ export const Carousel = ({ children, infinite }) => {
   const handleRightArrowClick = () => {
     setOffset((currentOffset) => {
       const newOffset = currentOffset - width
-      const maxOffset = -(width * (children.length - 1))
+      const maxOffset = -(width * (pages.length - 1))
       return Math.max(newOffset, maxOffset)
     })
   }
@@ -51,7 +64,7 @@ export const Carousel = ({ children, infinite }) => {
               transform: `translateX(${offset}px)`,
             }}
           >
-            {children}
+            {pages}
           </div>
         </div>
         <FaChevronRight className="arrow" onClick={handleRightArrowClick} />
